@@ -1,0 +1,19 @@
+<div>
+  <h1 class="text-center">Todo List</h1>
+  <input type="text" class="todo-input" placeholder="What needs to be done" [(ngModel)]="todoTitle" (keyup.enter)="addTodo()">
+  <h4 class="text-center" *ngIf="(todos.length<=0) else showTodos" >Add Todo</h4>
+  <ng-template #showTodos>
+    <todo-item
+    *ngFor="let todo of todos"
+    [todo]="todo"
+    (checkedItem)="doneEdit($event)"
+    (doubleClickedItem)="editTodo($event)"
+    (cancelledItem)="cancelEdit($event)"
+    (deletedItem)="deleteTodo($event)"
+  ></todo-item>
+  </ng-template>
+</div>
+
+
+
+
